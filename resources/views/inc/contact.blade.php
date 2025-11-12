@@ -1,19 +1,20 @@
-@extends('layouts.App')
+@extends('layouts.app')
+
 @section('header')
-    <!-- Page Header-->
     <header class="masthead" style="background-image: url('assets/img/contact-bg.jpg')">
         <div class="container position-relative px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="page-heading">
                         <h1>Contact Me</h1>
-                        <span class="subheading">Have questions? I have answers.</span>
+                        <span class="subheading">Send me a message</span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 @endsection
+
 @section('content')
     <!-- Main Content-->
     <main class="mb-4">
@@ -30,7 +31,9 @@
                         <!-- To make this form functional, sign up at-->
                         <!-- https://startbootstrap.com/solution/contact-forms-->
                         <!-- to get an API token!-->
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                        <form action="{{ route('post') }}" method="POST" id="contactForm"
+                            data-sb-form-api-token="API_TOKEN">
+                            @csrf
                             <div class="form-floating">
                                 <input class="form-control" id="name" type="text" placeholder="Enter your name..."
                                     data-sb-validations="required" />
@@ -80,8 +83,7 @@
                                 <div class="text-center text-danger mb-3">Error sending message!</div>
                             </div>
                             <!-- Submit Button-->
-                            <button class="btn btn-primary text-uppercase " id="submitButton"
-                                type="submit">Send</button>
+                            <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Send</button>
                         </form>
                     </div>
                 </div>
